@@ -166,7 +166,21 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "create":
+
+                    break;
+
+                case "read":
+                    break;
+
+                case "update":
+                    break;
+
+                case "delete":
+                    break;
+            }
         }
 
         // TODO: Animal CRUD Operations
