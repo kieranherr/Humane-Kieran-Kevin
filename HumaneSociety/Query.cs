@@ -226,7 +226,7 @@ namespace HumaneSociety
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-            throw new NotImplementedException();
+            return db.DietPlans.Where(d => d.Name == dietPlanName).Select(d => d.DietPlanId).FirstOrDefault();
         }
 
         // TODO: Adoption CRUD Operations
