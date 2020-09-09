@@ -166,7 +166,8 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            employee = db.Employees.Where(e => e.EmployeeId);
+            db.SubmitChanges();
         }
 
         // TODO: Animal CRUD Operations
