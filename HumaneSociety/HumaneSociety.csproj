@@ -71,12 +71,9 @@
       <LastGenOutput>HumaneSociety.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-<<<<<<< HEAD
-=======
     <None Include="HumaneSociety.dbml.layout">
       <DependentUpon>HumaneSociety.dbml</DependentUpon>
     </None>
->>>>>>> dc9fb1863309048d8e3766169e55ead56c1aef91
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
