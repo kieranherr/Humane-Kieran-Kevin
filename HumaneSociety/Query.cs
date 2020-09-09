@@ -173,7 +173,7 @@ namespace HumaneSociety
             {
                 case "create":
                     db.Employees.InsertOnSubmit(employee);
-                    
+                    db.SubmitChanges();
                     break;
 
                 case "read":
@@ -187,7 +187,6 @@ namespace HumaneSociety
 
                     employeeFromDb = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
 
-
                     employeeFromDb.FirstName = employee.FirstName;
                     employeeFromDb.LastName = employee.LastName;
                     employeeFromDb.UserName = employee.UserName;
@@ -199,6 +198,8 @@ namespace HumaneSociety
                     break;
 
                 case "delete":
+                    db.Employees.DeleteOnSubmit(employee);
+                    db.SubmitChanges();
                     break;
             }
 
