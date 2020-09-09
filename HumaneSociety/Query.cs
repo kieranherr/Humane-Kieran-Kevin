@@ -171,7 +171,7 @@ namespace HumaneSociety
             switch (crudOperation)
             {
                 case "create":
-
+                    db.Employees.InsertOnSubmit(employee);
                     break;
 
                 case "read":
