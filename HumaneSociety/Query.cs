@@ -167,8 +167,6 @@ namespace HumaneSociety
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
 
-            employee = db.Employees.Where(e => e.EmployeeId);
-            db.SubmitChanges();
 
             switch (crudOperation)
             {
@@ -223,7 +221,7 @@ namespace HumaneSociety
         
         internal static Room GetRoom(int animalId)
         {
-            throw new NotImplementedException();
+            return db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
         }
         
         internal static int GetDietPlanId(string dietPlanName)
