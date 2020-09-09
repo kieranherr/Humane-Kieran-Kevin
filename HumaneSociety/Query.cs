@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -172,12 +173,29 @@ namespace HumaneSociety
             {
                 case "create":
                     db.Employees.InsertOnSubmit(employee);
+                    
                     break;
 
                 case "read":
+                    var employeeQuery = from e in db.Employees
+                               where e.EmployeeId == employee.EmployeeId
+                               select e;
                     break;
 
                 case "update":
+                    Employee employeeFromDb = null;
+
+                    employeeFromDb = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
+
+
+                    employeeFromDb.FirstName = employee.FirstName;
+                    employeeFromDb.LastName = employee.LastName;
+                    employeeFromDb.UserName = employee.UserName;
+                    employeeFromDb.Password = employee.Password;
+                    employeeFromDb.EmployeeNumber = employee.EmployeeNumber;
+                    employeeFromDb.Email = employee.Email;
+
+                    db.SubmitChanges();
                     break;
 
                 case "delete":
