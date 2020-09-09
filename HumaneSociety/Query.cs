@@ -166,10 +166,10 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-<<<<<<< HEAD
+
             employee = db.Employees.Where(e => e.EmployeeId);
             db.SubmitChanges();
-=======
+
             switch (crudOperation)
             {
                 case "create":
@@ -185,7 +185,7 @@ namespace HumaneSociety
                 case "delete":
                     break;
             }
->>>>>>> dc9fb1863309048d8e3766169e55ead56c1aef91
+
         }
 
         // TODO: Animal CRUD Operations
@@ -218,7 +218,7 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
-            throw new NotImplementedException();
+            return db.Categories.Where(c => c.Name == categoryName).Select(c => c.CategoryId).FirstOrDefault();
         }
         
         internal static Room GetRoom(int animalId)
