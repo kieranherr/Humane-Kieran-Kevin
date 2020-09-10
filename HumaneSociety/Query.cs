@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -243,8 +244,50 @@ namespace HumaneSociety
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
-            throw new NotImplementedException();
+        {
+            foreach (KeyValuePair<int, string> kvp in updates)
+            {
+                Animal animalDb = db.Animals.Where(a => a.AnimalId == animalId).Single(); ;
+                switch (kvp.Key)
+                {
+                    case 1:
+                        Category category = db.Categories.Where(a => a.Name == kvp.Value).Single();
+                        animalDb.CategoryId = category.CategoryId;
+                        db.SubmitChanges();
+                        break;
+                    case 2:
+                        animalDb.Name = kvp.Value;
+                        db.SubmitChanges();
+                        break;
+                    case 3:
+                        animalDb.Age = Int32.Parse(kvp.Value);
+                        db.SubmitChanges();
+                        break;
+                    case 4:
+                        animalDb.Demeanor = kvp.Value;
+                        db.SubmitChanges();
+                        break;
+                    case 5:
+                        animalDb.KidFriendly = Convert.ToBoolean(kvp.Value);
+                        db.SubmitChanges();
+                        break;
+                    case 6:
+                        animalDb.PetFriendly = Convert.ToBoolean(kvp.Value);
+                        db.SubmitChanges();
+                        break;
+                    case 7:
+                        animalDb.Weight = Int32.Parse(kvp.Value);
+                        db.SubmitChanges();
+                        break;
+                    case 8:
+                        animalDb.AnimalId = Int32.Parse(kvp.Value);
+                        db.SubmitChanges();
+                        break;
+                    default:
+                        UserInterface.DisplayUserOptions("Input not recognized please try agian");
+                        break;
+                }
+            }
         }
 
         internal static void RemoveAnimal(Animal animal)
