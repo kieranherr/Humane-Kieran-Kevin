@@ -165,6 +165,7 @@ namespace HumaneSociety
         //// TODO Items: ////
         
         // TODO: Allow any of the CRUD operations to occur here
+        // Done
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
 
@@ -248,7 +249,17 @@ namespace HumaneSociety
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Animals.DeleteOnSubmit(animal);
+                db.SubmitChanges();
+            }
+            catch
+            {
+                Console.Clear();
+                UserInterface.DisplayUserOptions("Couldn't remove the animal. Please try again.");
+                return;
+            }
         }
         
         // TODO: Animal Multi-Trait Search
@@ -258,6 +269,7 @@ namespace HumaneSociety
         }
          
         // TODO: Misc Animal Things
+        // Done
         internal static int GetCategoryId(string categoryName)
         {
             return db.Categories.Where(c => c.Name == categoryName).Select(c => c.CategoryId).FirstOrDefault();
@@ -274,6 +286,7 @@ namespace HumaneSociety
         }
 
         // TODO: Adoption CRUD Operations
+        // Done
         internal static void Adopt(Animal animal, Client client)
         {
             Adoption adoption = new Adoption();
