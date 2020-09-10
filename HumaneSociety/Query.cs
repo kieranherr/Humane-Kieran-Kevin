@@ -217,13 +217,28 @@ namespace HumaneSociety
             {
                 Console.Clear();
                 UserInterface.DisplayUserOptions("Animal addition unsuccessful please try again");
+                return;
             }
 
         }
 
         internal static Animal GetAnimalByID(int id)
         {
-            throw new NotImplementedException();
+            Animal animalById = new Animal();
+            try
+            {
+                animalById = (Animal)(from a in db.Animals
+                              where a.AnimalId == id
+                              select a);
+                return animalById;
+            }
+            catch(Exception)
+            {
+                Console.Clear();
+                UserInterface.DisplayUserOptions("There is no animal with that animal ID. Please try again.");
+                return animalById;
+            }
+            
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
